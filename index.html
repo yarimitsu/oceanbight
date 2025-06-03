@@ -1,51 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ocean Bight</title>
+    <title>Ocean Bight - Marine Ecological Consulting</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div class="logo">Ocean Bight</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">Ocean Bight</div>
+        <nav class="sidebar-nav">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#contact">Contact</a>
         </nav>
-    </header>
+    </aside>
 
-    <main>
-        <section id="home" class="hero">
-            <h1>Welcome to Ocean Bight</h1>
-            <p>Your gateway to coastal excellence</p>
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Ocean Bight</h1>
+            <p>Marine Ecological Consulting</p>
         </section>
 
+        <!-- About Section -->
         <section id="about">
-            <h2>About Us</h2>
-            <p>This section will contain information about your business.</p>
+            <h2 class="section-header">About</h2>
+            <p>Ocean Bight is a marine ecological consulting firm specializing in ecosystem dynamics, glacier-coastal
+                interactions, and wildlife monitoring.</p>
         </section>
 
-        <section id="services">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Service 1</h3>
-                    <p>Description of service 1</p>
+        <!-- Research Section with Carousel -->
+        <section id="research">
+            <h2 class="section-header">Research</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/research1.JPG" alt="Research Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/research2.JPG" alt="Research Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/research3.JPG" alt="Research Image 3">
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Service 2</h3>
-                    <p>Description of service 2</p>
-                </div>
+                <button class="carousel-control carousel-prev">&lt;</button>
+                <button class="carousel-control carousel-next">&gt;</button>
             </div>
         </section>
 
+        <!-- Publications Section -->
+        <section id="publications">
+            <h2 class="section-header">Publications</h2>
+            <div class="research-theme">
+                <h3>Marine Heatwave Impacts on Ecosystem Dynamics</h3>
+                <!-- Publication cards here -->
+            </div>
+            <div class="research-theme">
+                <h3>Glacier-Coastal Ecosystem Interactions</h3>
+                <!-- Publication cards here -->
+            </div>
+            <div class="research-theme">
+                <h3>Wildlife Monitoring and Assessment</h3>
+                <!-- Publication cards here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contact">
-            <h2>Contact Us</h2>
+            <h2 class="section-header">Contact</h2>
             <form id="contact-form">
                 <input type="text" placeholder="Name" required>
                 <input type="email" placeholder="Email" required>
@@ -55,10 +85,39 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Ocean Bight. All rights reserved.</p>
-    </footer>
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.querySelector('.carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = carousel.querySelector('.carousel-prev');
+            const nextBtn = carousel.querySelector('.carousel-next');
+            let currentIndex = 0;
 
-    <script src="script.js"></script>
+            function showSlide(index) {
+                items.forEach(item => item.classList.remove('active'));
+                if (index >= items.length) currentIndex = 0;
+                if (index < 0) currentIndex = items.length - 1;
+                items[currentIndex].classList.add('active');
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex--;
+                showSlide(currentIndex);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex++;
+                showSlide(currentIndex);
+            });
+
+            // Auto-advance slides every 5 seconds
+            setInterval(() => {
+                currentIndex++;
+                showSlide(currentIndex);
+            }, 5000);
+        });
+    </script>
 </body>
+
 </html>
