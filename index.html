@@ -12,9 +12,13 @@
 <body>
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
-        <div class="logo">Ocean Bight</div>
+        <div class="logo-container">
+            <img src="images/logo.jpg" alt="Ocean Bight Logo">
+            <div class="logo-text">Ocean Bight</div>
+        </div>
         <nav class="sidebar-nav">
-            <a href="#about">About</a>
+            <a href="#hero">Home</a>
+            <a href="about.html">About</a>
             <a href="#research">Research</a>
             <a href="#publications">Publications</a>
             <a href="#contact">Contact</a>
@@ -24,65 +28,376 @@
     <!-- Main Content Area -->
     <main class="main-content">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" id="hero">
             <h1>Ocean Bight</h1>
             <p>Marine Ecological Consulting</p>
         </section>
+        <div class="bio-text">
+            <p><em>Recent human-driven warming of the atmosphere, oceans, and land is impacting every region
+                    globally. In subarctic and Arctic oceans of Alaska, we are already experiencing warmer ocean
+                    temperatures,
+                    increased freshwater runoff, major glacier and sea ice loss, and extreme marine heatwaves. These
+                    changes will have significant effects on fish and wildlife, which are important to Alaska's
+                    economy through recreation, tourism, and commercial fisheries. </em></p>
+            <p>Ocean Bight is a marine ecological consulting pactice specializing in ecosystem dynamics, glacier-coastal
+                interactions, and wildlife monitoring.</p>
 
-        <!-- About Section -->
+            <!-- About Section -->
+            <!-- 
         <section id="about">
             <h2 class="section-header">About</h2>
-            <p>Ocean Bight is a marine ecological consulting firm specializing in ecosystem dynamics, glacier-coastal
-                interactions, and wildlife monitoring.</p>
-        </section>
+            
+        </section> 
+        -->
 
-        <!-- Research Section with Carousel -->
-        <section id="research">
-            <h2 class="section-header">Research</h2>
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="images/research1.JPG" alt="Research Image 1">
+            <!-- Research Section with Carousel -->
+            <section id="research">
+                <h2 class="section-header">Research</h2>
+
+
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/research1.JPG" alt="Research Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/research2.JPG" alt="Research Image 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/research3.JPG" alt="Research Image 3">
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="images/research2.JPG" alt="Research Image 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/research3.JPG" alt="Research Image 3">
-                    </div>
+                    <button class="carousel-control carousel-prev">&lt;</button>
+                    <button class="carousel-control carousel-next">&gt;</button>
                 </div>
-                <button class="carousel-control carousel-prev">&lt;</button>
-                <button class="carousel-control carousel-next">&gt;</button>
-            </div>
-        </section>
+            </section>
 
-        <!-- Publications Section -->
-        <section id="publications">
-            <h2 class="section-header">Publications</h2>
-            <div class="research-theme">
-                <h3>Marine Heatwave Impacts on Ecosystem Dynamics</h3>
-                <!-- Publication cards here -->
-            </div>
-            <div class="research-theme">
-                <h3>Glacier-Coastal Ecosystem Interactions</h3>
-                <!-- Publication cards here -->
-            </div>
-            <div class="research-theme">
-                <h3>Wildlife Monitoring and Assessment</h3>
-                <!-- Publication cards here -->
-            </div>
-        </section>
+            <!-- Publications Section -->
+            <section id="publications">
+                <h2 class="section-header">Featured Publications</h2>
+                <p class="section-subtitle">A selection of key research highlighting work on marine heatwaves, ecosystem
+                    dynamics, and wildlife responses to environmental change. Full publication list available <a
+                        href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank">here</a>.</p>
 
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2 class="section-header">Contact</h2>
-            <form id="contact-form">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
+                <div class="publications-grid">
+                    <!-- Publication 1 -->
+                    <article class="publication-card fade-in" id="pub-arimitsu-2023">
+                        <span class="publication-year">2023</span>
+                        <h3>Joint spatiotemporal models to predict seabird densities at sea</h3>
+                        <p class="publication-authors"> Arimitsu, ML, JF Piatt, JT Thorson, KJ Kuletz, GS Drew, SK
+                            Schoen,
+                            DA Cushing, C Kroeger, and WJ Sydeman</p>
+                        <p class="publication-summary">This paper presents advanced statistical models for predicting
+                            where
+                            seabirds are likely to be found at sea, aiding conservation efforts.</p>
+                        <p class="publication-journal">
+                            <a href="https://doi.org/10.3389/fmars.2023.1078042" target="_blank">Frontiers in Marine
+                                Science. https://doi.org/10.3389/fmars.2023.1078042</a>
+                        </p>
+                        <button class="abstract-toggle button-small">›</button>
+                        <div class="publication-abstract">
+                            <p>Using nearly 50 years of at-sea surveys archived in the <a
+                                    href="https://www.usgs.gov/centers/alaska-science-center/science/north-pacific-pelagic-seabird-database"
+                                    target="_blank">North Pacific Pelagic Seabird Database (NPPSD)</a>, this study used
+                                joint species distribution models to improve predictions of seabird densities,
+                                integrating
+                                environmental covariates
+                                and spatial dependencies to provide robust estimates for marine spatial planning and
+                                conservation management in a changing ocean.</p>
+                        </div>
+                    </article>
+
+                    <!-- Publication 2 (Moved Up - Arimitsu et al. 2021 GCB) -->
+                    <article class="publication-card fade-in" id="pub-arimitsu-2021">
+                        <span class="publication-year">2021</span>
+                        <h3>Heatwave-induced synchrony within forage fish portfolio disrupts energy flow to top pelagic
+                            predators</h3>
+                        <p class="publication-authors">Arimitsu, M., J. Piatt, R. Suryan, S. Batten, M.A. Bishop, R.
+                            Campbell, H. Coletti, D. Cushing, K. Gorman, S. Hatch, R. Hopcroft, K. Kuletz, C.
+                            Marsteller, C.
+                            McKinstry, D. McGowan, J. Moran, W.S. Pegau, A. Schaeffer, S. Schoen, J. Straley, and V. von
+                            Biela </p>
+                        <p class="publication-summary">The 2014–2016 Pacific marine heatwave caused a simultaneous
+                            collapse
+                            in abundance and quality of key Gulf of Alaska forage fish, leading to widespread food web
+                            disruption and mass mortalities among higher predators.</p>
+                        <p class="publication-journal">
+                            <a href="https://doi.org/10.1111/gcb.15556" target="_blank">Global Change Biology, 27,
+                                1859–1878. doi:10.1111/gcb.15556</a>
+                        </p>
+                        <button class="abstract-toggle button-small">›</button>
+                        <div class="publication-abstract">
+                            <p>During the Pacific marine heatwave of 2014–2016, abundance and quality of several key
+                                forage
+                                fish species in the Gulf of Alaska were simultaneously reduced throughout the system.
+                                Capelin (Mallotus catervarius), sand lance (Ammodytes personatus), and herring (Clupea
+                                pallasii) populations were at historically low levels, and within this community abrupt
+                                declines in portfolio effects identify trophic instability at the onset of the heatwave.
+                                Although compensatory changes in age structure, size, growth or energy content of forage
+                                fish were observed to varying degrees among all these forage fish, none were able to
+                                fully
+                                mitigate adverse impacts of the heatwave, which likely included both top-down and
+                                bottom-up
+                                forcing. Notably, changes to the demographic structure of forage fish suggested
+                                size-selective removals typical of top-down regulation. At the same time, changes in
+                                zooplankton communities may have driven bottom-up regulation as copepod community
+                                structure
+                                shifted toward smaller, warm water species, and euphausiid biomass was reduced owing to
+                                the
+                                loss of cold-water species. Mediated by these impacts on the forage fish community, an
+                                unprecedented disruption of the normal pelagic food web was signaled by higher trophic
+                                level
+                                disruptions during 2015–2016, when seabirds, marine mammals, and groundfish experienced
+                                shifts in distribution, mass mortalities, and reproductive failures. Unlike
+                                decadal-scale
+                                variability underlying ecosystem regime shifts, the heatwave appeared to temporarily
+                                overwhelm the ability of the forage fish community to buffer against changes imposed by
+                                warm
+                                water anomalies, thereby eliminating any ecological advantages that may have accrued
+                                from
+                                having a suite of coexisting forage species with differing life-history compensations.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Publication 3 (Was 2 - Suryan et al. 2021 Sci Rep) -->
+                    <article class="publication-card fade-in" id="pub-suryan-2021">
+                        <span class="publication-year">2021</span>
+                        <h3>Ecosystem response persists after a prolonged marine heatwave</h3>
+                        <p class="publication-authors">R Suryan, M Arimitsu, H Coletti, R Hopcroft, M Lindeberg, S
+                            Barbeaux,
+                            S Batten, W Burt, M Bishop, J Bodkin, R Brenner, R Campbell, D Cushing, S Danielson, M Dorn,
+                            B
+                            Drummond, D Esler, T Gelatt, D Hanselman, S Hatch, S Haught, K Holderied, K Iken, D Irons, A
+                            Kettle, D Kimmel, B Konar, K Kuletz, B Laurel, J Maniscalco, C Matkin, C McKinstry, D
+                            Monson, J
+                            Moran, D Olsen, W Palsson, W Pegau, J Piatt, L Rogers, N Rojek, A Schaefer, I Spies, J
+                            Straley,
+                            S Strom, K Sweeney, M Szymkowiak, B Weitzman, E Yasumiishi, S Zador</p>
+                        <p class="publication-summary">Long-term ecosystem monitoring in the Gulf of Alaska revealed
+                            that
+                            the 2014–2016 marine heatwave caused abrupt, persistent changes across the food web, raising
+                            uncertainty about if or when the ecosystem will recover.</p>
+                        <p class="publication-journal">
+                            <a href="https://doi.org/10.1038/s41598-021-83818-5" target="_blank">Scientific Reports, 11,
+                                6235 (2021). doi:10.1038/s41598-021-83818-5</a>
+                        </p>
+                        <button class="abstract-toggle button-small">›</button>
+                        <div class="publication-abstract">
+                            <p>Some of the longest and most comprehensive marine ecosystem monitoring programs were
+                                established in the Gulf of Alaska following the environmental disaster of the Exxon
+                                Valdez
+                                oil spill over 30 years ago. These monitoring programs have been successful in assessing
+                                recovery from oil spill impacts, and their continuation decades later has now provided
+                                an
+                                unparalleled assessment of ecosystem responses to another newly emerging global threat,
+                                marine heatwaves. The 2014–2016 northeast Pacific marine heatwave (PMH) in the Gulf of
+                                Alaska was the longest lasting heatwave globally over the past decade, with some
+                                cooling,
+                                but also continued warm conditions through 2019. Our analysis of 187 time series from
+                                primary production to commercial fisheries and nearshore intertidal to offshore oceanic
+                                domains demonstrate abrupt changes across trophic levels, with many responses persisting
+                                up
+                                to at least 5 years after the onset of the heatwave. Furthermore, our suite of metrics
+                                showed novel community-level groupings relative to at least a decade prior to the
+                                heatwave.
+                                Given anticipated increases in marine heatwaves under current climate projections, it
+                                remains uncertain when or if the Gulf of Alaska ecosystem will return to a pre-PMH
+                                state.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Publication 4 -->
+                    <article class="publication-card fade-in" id="pub-piatt-2020">
+                        <span class="publication-year">2020</span>
+                        <h3>Extreme mortality and reproductive failure of common murres resulting from the northeast
+                            Pacific
+                            marine heatwave of 2014–2016</h3>
+                        <p class="publication-authors">Piatt, JF, JK Parrish, HM Renner, SK Schoen, TT Jones, ML
+                            Arimitsu,
+                            KJ Kuletz, B Bodenstein, M García-Reyes, RS Duerr, RM Corcoran, R Kaler, GJ McChesney, RT
+                            Golightly, HA Coletti, RM Suryan, HK Burgess, J Lindsey, K Lindquist, PM Warzybok, J
+                            Jahncke, J
+                            Roletto, WJ Sydeman.</p>
+                        <p class="publication-summary">The 2014–2016 Pacific marine heatwave drove simultaneous
+                            collapses in
+                            abundance and quality of key Gulf of Alaska forage fish, triggering widespread food web
+                            disruption and mass mortalities among top predators that could not be buffered by typical
+                            compensatory responses.</p>
+                        <p class="publication-journal">
+                            <a href="https://doi.org/10.1371/journal.pone.0226087" target="_blank">PLOS One 15:e0226087
+                                https://doi.org/10.1371/journal.pone.0226087</a>
+                        </p>
+                        <button class="abstract-toggle button-small">›</button>
+                        <div class="publication-abstract">
+                            <p>During the Pacific marine heatwave of 2014–2016, abundance and quality of several key
+                                forage
+                                fish species in the Gulf of Alaska were simultaneously reduced throughout the system.
+                                Capelin (Mallotus catervarius), sand lance (Ammodytes personatus), and herring (Clupea
+                                pallasii) populations were at historically low levels, and within this community abrupt
+                                declines in portfolio effects identify trophic instability at the onset of the heatwave.
+                                Although compensatory changes in age structure, size, growth or energy content of forage
+                                fish were observed to varying degrees among all these forage fish, none were able to
+                                fully
+                                mitigate adverse impacts of the heatwave, which likely included both top-down and
+                                bottom-up
+                                forcing. Notably, changes to the demographic structure of forage fish suggested
+                                size-selective removals typical of top-down regulation. At the same time, changes in
+                                zooplankton communities may have driven bottom-up regulation as copepod community
+                                structure
+                                shifted toward smaller, warm water species, and euphausiid biomass was reduced owing to
+                                the
+                                loss of cold-water species. Mediated by these impacts on the forage fish community, an
+                                unprecedented disruption of the normal pelagic food web was signaled by higher trophic
+                                level
+                                disruptions during 2015–2016, when seabirds, marine mammals, and groundfish experienced
+                                shifts in distribution, mass mortalities, and reproductive failures. Unlike
+                                decadal-scale
+                                variability underlying ecosystem regime shifts, the heatwave appeared to temporarily
+                                overwhelm the ability of the forage fish community to buffer against changes imposed by
+                                warm
+                                water anomalies, thereby eliminating any ecological advantages that may have accrued
+                                from
+                                having a suite of coexisting forage species with differing life-history compensations.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Publication 5 -->
+                    <article class="publication-card fade-in" id="pub-vonbiela-2019">
+                        <span class="publication-year">2019</span>
+                        <h3>Extreme reduction in nutritional value of a key forage fish during the Pacific marine
+                            heatwave
+                            of 2014-2016</h3>
+                        <p class="publication-authors">von Biela, VR, ML Arimitsu, JF Piatt, B Heflin, SK Schoen, JL
+                            Trowbridge, and CM Clawson</p>
+                        <p class="publication-summary">During the multi-year Pacific marine heatwave, Pacific sand lance
+                            in
+                            the Gulf of Alaska experienced up to an 89% reduction in energy content compared to
+                            pre-heatwave
+                            levels.</p>
+                        <p class="publication-journal">
+                            <a href="https://doi.org/10.3354/meps13160" target="_blank">Marine Ecology Progress Series,
+                                632,
+                                219-225. doi:10.3354/meps13160</a>
+                        </p>
+                        <button class="abstract-toggle button-small">›</button>
+                        <div class="publication-abstract">
+                            <p>Extreme marine heatwaves in 2014–2016 led to drastic declines in the nutritional value
+                                and
+                                energy content of age-1 Pacific sand lance in Prince William Sound, Alaska, disrupting
+                                energy flow to predators and contributing to widespread population declines and breeding
+                                failures among North Pacific wildlife.</p>
+                        </div>
+                    </article>
+
+                    <!-- NEW Publication (Arimitsu et al. 2017) -->
+                    <article class="publication-card fade-in" id="pub-arimitsu-2017-fisheries">
+                        <span class="publication-year">2017</span>
+                        <h3>Best practices for assessing forage fish fisheries−seabird resource competition</h3>
+                        <p class="publication-authors">W Sydeman, SA Thompson, T Anker-Nilssen, M Arimitsu, A Bennison,
+                            S
+                            Bertrand, P Boersch-Supan, C Boyd, N Bransome, R Crawford, F Daunt, R Furness, D Gianuca, A
+                            Gladics, L Koehn, J Lang, E Logerwell, T Morris, E Phillips, J Provencher, A Punt, C Saraux,
+                            L
+                            Shannon, R Sherley, A Simeone, R Wanless, S Zador</p>
+                        <p class="publication-summary">Fisheries targeting forage fish and euphausiids may compete with
+                            seabirds for food, raising concerns about ecosystem impacts and prompting a call for
+                            integrated,
+                            scale-matched research methods to better assess and manage fisheries-seabird resource
+                            competition.</p>
+                        <p class="publication-journal">
+                            <a href="https://doi.org/10.1016/j.fishres.2017.05.01" target="_blank">Fisheries Research,
+                                194,
+                                129-140. doi:10.1016/j.fishres.2017.05.01</a>
+                        </p>
+                        <button class="abstract-toggle button-small">›</button>
+                        <div class="publication-abstract">
+                            <p>Competition for shared prey resources between fisheries and seabirds is a global
+                                conservation
+                                concern. Effective ecosystem-based fisheries management requires robust assessments of
+                                the
+                                potential for such competition, but these assessments are often hampered by data
+                                limitations
+                                and methodological challenges. This paper reviews current approaches and proposes best
+                                practices for assessing forage fish fisheries–seabird resource competition. We highlight
+                                key
+                                data requirements, including spatially and temporally explicit data on fishery removals,
+                                seabird diet and consumption rates, and forage fish abundance and distribution. We
+                                advocate
+                                for integrated modeling approaches that can account for uncertainty and explore the
+                                potential impacts of different management scenarios on both fisheries and seabird
+                                populations. Adopting these best practices can lead to more reliable assessments of
+                                resource
+                                competition and better-informed management decisions to ensure the sustainability of
+                                forage
+                                fish populations and the seabirds that depend on them.</p>
+                        </div>
+                    </article>
+
+                    <!-- Publication (Arimitsu et al. 2016) -->
+                    <article class="publication-card fade-in" id="pub-arimitsu-2016">
+                        <span class="publication-year">2016</span>
+                        <h3>Influence of glacier runoff on ecosystem structure in Gulf of Alaska fjords</h3>
+                        <p class="publication-authors">Arimitsu, M. L., Piatt, J. F., & Mueter, F.</p>
+                        <p class="publication-summary">Glacial runoff shapes physical, nutrient, and biological
+                            gradients in
+                            Gulf of Alaska fjords, strongly influencing phytoplankton, zooplankton, fish, and seabird
+                            communities, with future ecosystem changes expected as glacier runoff patterns continue to
+                            shift.</p>
+                        <p class="publication-journal">
+                            <a href="https://www.int-res.com/articles/meps_oa/m560p019.pdf" target="_blank">Marine
+                                Ecology
+                                Progress Series, 560,
+                                19-40. doi:10.3354/meps11888</a>
+                        </p>
+                        <button class="abstract-toggle button-small">›</button>
+                        <div class="publication-abstract">
+                            <p>To better understand the influence of glacier runoff on fjord ecosystems, we sampled
+                                oceanographic conditions, nutrients, zooplankton, forage fish and seabirds within 4
+                                fjords
+                                in coastal areas of the Gulf Alaska. We used generalized additive models and
+                                geostatistics
+                                to identify the range of glacier runoff influence into coastal waters within fjords of
+                                varying estuarine influence and topographic complexity. We also modeled the response of
+                                depth-integrated chlorophyll <em>a</em> concentration, copepod biomass, fish and seabird
+                                abundance to physical, nutrient and biotic predictor variables. The effects of glacial
+                                runoff were traced at least 10 km into coastal fjords by cold, turbid, stratified and
+                                generally nutrient-rich near-surface conditions. Glacially modified physical gradients,
+                                nutrient availability and among-fjord differences explained 67% of the variation in
+                                phytoplankton abundance, which is a driver of ecosystem structure at higher trophic
+                                levels.
+                                Copepod, euphausiid, fish and seabird distribution and abundance were related to
+                                environmental gradients that could be traced to glacial freshwater input, particularly
+                                turbidity and temperature. Seabird density was predicted by prey availability and
+                                silicate
+                                concentrations, which may be a proxy for upwelling areas where this nutrient is in
+                                excess.
+                                Similarities in ecosystem structure among fjords were attributable to an influx of cold,
+                                fresh and sediment-laden water, whereas differences were likely related to fjord
+                                topography
+                                and local differences in estuarine vs. ocean influence. We anticipate that continued
+                                changes
+                                in the timing and volume of glacial runoff will ultimately alter coastal ecosystems in
+                                the
+                                future.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2 class="section-header">Contact</h2>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" placeholder="Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
     </main>
 
     <script>
@@ -118,6 +433,8 @@
             }, 5000);
         });
     </script>
+
+    <script src="script.js" defer></script>
 </body>
 
 </html>

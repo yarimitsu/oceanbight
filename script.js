@@ -27,77 +27,45 @@ document.querySelectorAll('.fade-in').forEach((element) => {
     observer.observe(element);
 });
 
-// Image Carousel
-class Carousel {
-    constructor(element) {
-        this.carousel = element;
-        this.inner = element.querySelector('.carousel-inner');
-        this.items = element.querySelectorAll('.carousel-item');
-        this.prev = element.querySelector('.prev');
-        this.next = element.querySelector('.next');
+//DOMContentLoaded listener
+document.addEventListener('DOMContentLoaded', () => {
+    // Carousel functionality (simple version)
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+        const items = carousel.querySelectorAll('.carousel-item');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        let currentIndex = 0;
 
-        this.currentIndex = 0;
-        this.itemWidth = this.items[0].offsetWidth;
+        function showSlide(index) {
+            items.forEach(item => item.classList.remove('active'));
+            if (index >= items.length) currentIndex = 0;
+            if (index < 0) currentIndex = items.length - 1;
+            // Need to re-assign currentIndex if it wrapped around
+            if (index >= items.length) currentIndex = 0;
+            else if (index < 0) currentIndex = items.length - 1;
+            else currentIndex = index; // Assign the valid index
 
-        this.setupEventListeners();
-        this.updateCarousel();
-    }
-
-    setupEventListeners() {
-        this.prev.addEventListener('click', () => this.navigate('prev'));
-        this.next.addEventListener('click', () => this.navigate('next'));
-
-        // Touch events for mobile
-        let startX = 0;
-        let isDragging = false;
-
-        this.carousel.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            startX = e.touches[0].pageX;
-        });
-
-        this.carousel.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-
-            const currentX = e.touches[0].pageX;
-            const diff = startX - currentX;
-
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    this.navigate('next');
-                } else {
-                    this.navigate('prev');
-                }
-                isDragging = false;
-            }
-        });
-
-        this.carousel.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-    }
-
-    navigate(direction) {
-        if (direction === 'next') {
-            this.currentIndex = (this.currentIndex + 1) % this.items.length;
-        } else {
-            this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
+            items[currentIndex].classList.add('active');
         }
 
-        this.updateCarousel();
-    }
+        if (prevBtn && nextBtn && items.length > 0) { // Check if buttons and items exist
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentIndex - 1);
+            });
 
-    updateCarousel() {
-        const offset = -this.currentIndex * 100;
-        this.inner.style.transform = `translateX(${offset}%)`;
-    }
-}
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentIndex + 1);
+            });
 
-// Initialize carousel
-document.addEventListener('DOMContentLoaded', () => {
-    const carouselElement = document.querySelector('.carousel');
-    if (carouselElement) {
-        new Carousel(carouselElement);
+            // Auto-advance slides every 5 seconds
+            setInterval(() => {
+                showSlide(currentIndex + 1);
+            }, 5000);
+
+            // Show the initial slide
+            showSlide(currentIndex);
+        }
     }
 
     // Form submission
@@ -105,19 +73,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Add your form submission logic here
+            // Add your form submission logic here (e.g., using Fetch API or FormSubmit)
             alert('Thank you for your message! We will get back to you soon.');
             form.reset();
         });
     }
 
-    // Publication abstract toggles
+    // Publication abstract hover functionality
+    document.querySelectorAll('.publication-card').forEach(card => {
+        const abstract = card.querySelector('.publication-abstract');
+        const toggleButton = card.querySelector('.abstract-toggle');
+
+        if (abstract && toggleButton) { // Ensure elements exist
+            card.addEventListener('mouseenter', () => {
+                abstract.classList.add('show');
+                toggleButton.classList.add('active');
+            });
+
+            card.addEventListener('mouseleave', () => {
+                abstract.classList.remove('show');
+                toggleButton.classList.remove('active');
+            });
+        }
+    });
+
+    // Remove old click-based toggle if it exists (or ensure it was removed)
+    /* 
     document.querySelectorAll('.abstract-toggle').forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             e.preventDefault();
             const abstract = toggle.closest('.publication-card').querySelector('.publication-abstract');
             abstract.classList.toggle('show');
-            toggle.textContent = abstract.classList.contains('show') ? 'Hide Abstract' : 'Abstract';
+            toggle.classList.toggle('active'); 
         });
     });
+    */
 });
