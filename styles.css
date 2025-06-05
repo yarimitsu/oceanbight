@@ -358,14 +358,10 @@ nav {
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     padding: 2rem;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(165, 216, 255, 0.1);
-}
-
-.publication-card:hover {
-    box-shadow: 0 12px 40px rgba(165, 216, 255, 0.2);
+    transition: box-shadow 0.3s ease;
 }
 
 .publication-year {
@@ -378,6 +374,7 @@ nav {
     display: block;
     margin-bottom: 0.5rem;
     box-shadow: none;
+    text-shadow: 0 0 10px var(--ice-glow);
 }
 
 .publication-card h3 {
@@ -406,19 +403,39 @@ nav {
     text-shadow: 0 0 10px var(--ice-glow);
 }
 
-.publication-abstract {
+.publication-card .publication-abstract {
     display: none;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-top: 1rem;
-    padding: 1rem;
-    background: rgba(24, 56, 82, 0.3);
-    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.publication-abstract.show {
+.publication-card .publication-abstract.show {
     display: block;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.abstract-toggle.button-small {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.3rem 0.6rem;
+    font-size: 1rem;
+    line-height: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.abstract-toggle.button-small.active {
+    transform: rotate(90deg);
+    background-color: var(--primary-color);
+    color: var(--button-text-dark);
 }
 
 /* Research theme sections */
@@ -637,42 +654,6 @@ img {
     margin-bottom: 1rem;
 }
 
-.abstract-toggle.button-small {
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    padding: 0.3rem 0.6rem;
-    font-size: 1rem;
-    line-height: 1;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-    margin-top: 0.5rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.abstract-toggle.button-small:hover {
-    background-color: var(--primary-color);
-    color: var(--button-text-dark);
-}
-
-.abstract-toggle.button-small.active {
-    transform: rotate(90deg);
-    background-color: var(--primary-color);
-    color: var(--button-text-dark);
-}
-
-/* Ensure other headers use Syne if not already */
-.logo,
-.sidebar-nav a,
-.section-header,
-section h2,
-.research-theme h3 {
-    font-family: 'Syne', sans-serif;
-}
-
 /* Styles for About page (about.html) */
 .bio-container {
     display: flex;
@@ -770,4 +751,13 @@ section h2,
 .experience-dates {
     font-weight: 500;
     color: var(--text-secondary);
+}
+
+/* Ensure other headers use Syne if not already */
+.logo,
+.sidebar-nav a,
+.section-header,
+section h2,
+.research-theme h3 {
+    font-family: 'Syne', sans-serif;
 }

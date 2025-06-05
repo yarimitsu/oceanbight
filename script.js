@@ -2,9 +2,12 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -29,7 +32,7 @@ document.querySelectorAll('.fade-in').forEach((element) => {
 
 //DOMContentLoaded listener
 document.addEventListener('DOMContentLoaded', () => {
-    // Carousel functionality (simple version)
+    // Carousel functionality
     const carousel = document.querySelector('.carousel');
     if (carousel) {
         const items = carousel.querySelectorAll('.carousel-item');
@@ -38,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIndex = 0;
 
         function showSlide(index) {
+            if (items.length === 0) return;
             items.forEach(item => item.classList.remove('active'));
             if (index >= items.length) {
                 currentIndex = 0;
@@ -49,21 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
             items[currentIndex].classList.add('active');
         }
 
-        if (prevBtn && nextBtn && items.length > 0) { // Check if buttons and items exist
-            prevBtn.addEventListener('click', () => {
-                showSlide(currentIndex - 1);
-            });
-
-            nextBtn.addEventListener('click', () => {
-                showSlide(currentIndex + 1);
-            });
-
-            // Auto-advance slides every 5 seconds
-            setInterval(() => {
-                showSlide(currentIndex + 1);
-            }, 5000);
-
-            // Show the initial slide
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+            setInterval(() => showSlide(currentIndex + 1), 5000);
             showSlide(currentIndex);
         }
     }
@@ -73,27 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Add your form submission logic here (e.g., using Fetch API or FormSubmit)
             alert('Thank you for your message! We will get back to you soon.');
             form.reset();
         });
     }
 
-    // Publication abstract hover functionality
-    document.querySelectorAll('.publication-card').forEach(card => {
-        const abstract = card.querySelector('.publication-abstract');
-        const toggleButton = card.querySelector('.abstract-toggle');
-
-        if (abstract && toggleButton) { // Ensure elements exist
-            card.addEventListener('mouseenter', () => {
-                abstract.classList.add('show');
-                toggleButton.classList.add('active');
-            });
-
-            card.addEventListener('mouseleave', () => {
-                abstract.classList.remove('show');
-                toggleButton.classList.remove('active');
-            });
-        }
+    // Publication abstract toggle functionality
+    document.querySelectorAll('.abstract-toggle').forEach(button => {
+        button.addEventListener('click', function () {
+            const abstract = this.nextElementSibling;
+            if (abstract && abstract.classList.contains('publication-abstract')) {
+                abstract.classList.toggle('show');
+                this.classList.toggle('active');
+            }
+        });
     });
 });
