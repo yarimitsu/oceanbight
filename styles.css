@@ -168,6 +168,8 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 1;
+    font-size: 3.5rem;
+    font-family: 'Syne', sans-serif;
 }
 
 .hero p {
@@ -179,17 +181,17 @@ body {
 /* Image carousel styles */
 .carousel {
     width: 100%;
-    height: 500px;
     position: relative;
-    overflow: hidden;
     border-radius: 12px;
     margin: 2rem 0;
 }
 
 .carousel-inner {
     width: 100%;
-    height: 100%;
+    height: 500px;
     position: relative;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 .carousel-item {
@@ -200,6 +202,7 @@ body {
     height: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    background-color: #202830;
 }
 
 .carousel-item.active {
@@ -210,13 +213,19 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    background-color: #202830;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    top: auto;
+    transform: none;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     width: 50px;
@@ -237,11 +246,11 @@ body {
 }
 
 .carousel-prev {
-    left: 20px;
+    /* No longer need left property */
 }
 
 .carousel-next {
-    right: 20px;
+    /* No longer need right property */
 }
 
 /* Section headers */
@@ -515,16 +524,71 @@ footer {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        border-radius: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-container {
+        flex-direction: row;
+        width: auto;
+        gap: 1rem;
+        margin-bottom: 0;
+    }
+
+    .logo-container img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo-container .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        gap: 1rem;
+        width: auto;
+    }
+
+    .sidebar-nav a::after {
+        display: none;
+        /* simpler hover on mobile */
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .publication-card {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .research-theme h3 {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
+    }
+
+    .headshot-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 }
 
@@ -694,21 +758,6 @@ section h2,
 }
 
 .experience-dates {
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    /* Make dates stand out a bit */
-    margin-bottom: 0.5rem;
-}
-
-/* Responsive adjustments for bio page if needed */
-@media (max-width: 768px) {
-    .headshot-container {
-        flex: 0 0 100%;
-        /* Full width on smaller screens */
-        max-width: 200px;
-        /* Optionally constrain max size even when full width */
-        margin: 0 auto 2rem auto;
-        /* Center headshot */
-    }
+    font-weight: 500;
+    color: var(--text-secondary);
 }
