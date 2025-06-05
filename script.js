@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function showSlide(index) {
             items.forEach(item => item.classList.remove('active'));
-            if (index >= items.length) currentIndex = 0;
-            if (index < 0) currentIndex = items.length - 1;
-            // Need to re-assign currentIndex if it wrapped around
-            if (index >= items.length) currentIndex = 0;
-            else if (index < 0) currentIndex = items.length - 1;
-            else currentIndex = index; // Assign the valid index
-
+            if (index >= items.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = items.length - 1;
+            } else {
+                currentIndex = index;
+            }
             items[currentIndex].classList.add('active');
         }
 
@@ -96,16 +96,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-
-    // Remove old click-based toggle if it exists (or ensure it was removed)
-    /* 
-    document.querySelectorAll('.abstract-toggle').forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const abstract = toggle.closest('.publication-card').querySelector('.publication-abstract');
-            abstract.classList.toggle('show');
-            toggle.classList.toggle('active'); 
-        });
-    });
-    */
 });
