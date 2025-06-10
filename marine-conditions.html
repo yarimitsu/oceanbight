@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marine Conditions - Ocean Bight, LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .condition-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .condition-card h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .embed-container {
+            position: relative;
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quick-link {
+            display: block;
+            padding: 1rem;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .quick-link:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .quick-link h4 {
+            margin: 0 0 0.5rem 0;
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .quick-link p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .alert-banner {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .alert-banner h4 {
+            color: #92400e;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .location-selector {
+            margin: 1rem 0;
+        }
+
+        .location-selector select {
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .conditions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .condition-card {
+                padding: 1rem;
+            }
+
+            .condition-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .embed-container {
+                padding-bottom: 60%;
+                margin-bottom: 0.75rem;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+                margin: 1.5rem 0;
+            }
+
+            .quick-link {
+                padding: 0.75rem;
+            }
+
+            .quick-link h4 {
+                font-size: 1rem;
+            }
+
+            .quick-link p {
+                font-size: 0.85rem;
+            }
+
+            .section-header {
+                font-size: 1.5rem;
+                margin: 1.5rem 0 1rem 0;
+            }
+
+            .location-selector {
+                margin: 1rem 0;
+            }
+
+            .location-selector select {
+                width: 100%;
+                padding: 0.75rem;
+                font-size: 1rem;
+                -webkit-appearance: none;
+                appearance: none;
+                background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+                background-repeat: no-repeat;
+                background-position: right 0.75rem center;
+                background-size: 0.75rem;
+                padding-right: 2.5rem;
+            }
+
+            .alert-banner {
+                padding: 0.75rem;
+                margin: 0.75rem 0;
+            }
+
+            .alert-banner h4 {
+                font-size: 1rem;
+            }
+
+            .alert-banner p,
+            .alert-banner ul {
+                font-size: 0.9rem;
+            }
+
+            /* Better touch targets for mobile */
+            .quick-link {
+                min-height: 44px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                touch-action: manipulation;
+            }
+
+            /* Improve readability on mobile */
+            .condition-card p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            .condition-card ul {
+                padding-left: 1rem;
+            }
+
+            .condition-card li {
+                margin-bottom: 0.25rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 0.75rem;
+            }
+
+            .hero {
+                padding: 1.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .conditions-grid {
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+
+            .condition-card {
+                padding: 0.75rem;
+            }
+
+            .condition-card h3 {
+                font-size: 1rem;
+            }
+
+            .embed-container {
+                padding-bottom: 50%;
+            }
+
+            .section-header {
+                font-size: 1.25rem;
+            }
+
+            .location-selector select {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Ensure iframes are responsive */
+        @media (max-width: 768px) {
+            .embed-container iframe {
+                border: none;
+            }
+        }
+
+        /* High DPI/Retina displays */
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+            .condition-card {
+                border-width: 0.5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="images/logo.jpg" alt="Ocean Bight Logo">
+            <div class="logo-text">Ocean Bight, LLC</div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">CV</a>
+            <a href="index.html#research">Research</a>
+            <a href="index.html#publications">Publications</a>
+            <a href="marine-conditions.html" class="active">Marine Conditions</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <section class="hero">
+            <h1>Marine Conditions</h1>
+            <p>Current weather, tides, and boating information for Alaska waters</p>
+        </section>
+
+
+        <!-- Location Selector -->
+        <div class="location-selector">
+            <label for="location-select"><strong>Select Region:</strong></label>
+            <select id="location-select" onchange="updateLocation()">
+                <option value="prince-william-sound">Prince William Sound</option>
+                <option value="cook-inlet">Cook Inlet</option>
+                <option value="kenai-peninsula">Kenai Peninsula</option>
+                <option value="kodiak">Kodiak Island</option>
+                <option value="southeast-alaska">Southeast Alaska</option>
+            </select>
+        </div>
+
+        <!-- Main Conditions Grid -->
+        <div class="conditions-grid">
+            <!-- Current Weather -->
+            <div class="condition-card">
+                <h3>Area Forecast Disucussion</h3>
+                <div class="embed-container">
+                    <iframe
+                        src="https://forecast.weather.gov/product.php?site=NWS&issuedby=AJK&product=AFD&format=txt&version=1&glossary=0"
+                        title="NOAA Weather Forecast"></iframe>
+                </div>
+                <p><small>NOAA Weather Service - Juneau, Southeast Alaska</small></p>
+            </div>
+
+            <!-- Marine Forecast -->
+            <div class="condition-card">
+                <h3>Marine Forecast</h3>
+                <div class="embed-container">
+                    <iframe src="https://www.weather.gov/ajk?story=2" title="Marine Weather Forecast"></iframe>
+                </div>
+                <p><small>NOAA Marine Weather - Gulf of Alaska</small></p>
+            </div>
+
+            <!-- Tide Chart -->
+            <div class="condition-card">
+                <h3>🌊 Tide Information</h3>
+                <div class="embed-container">
+                    <iframe src="https://tidesandcurrents.noaa.gov/tide_predictions.html?gid=1391"
+                        title="NOAA Tide Predictions"></iframe>
+                </div>
+                <p><small>NOAA Tides & Currents - Valdez, AK</small></p>
+            </div>
+
+            <!-- Wind & Waves -->
+            <div class="condition-card">
+                <h3>💨 Wind & Wave Conditions</h3>
+                <div class="embed-container">
+                    <iframe src="https://tidesandcurrents.noaa.gov/noaatidepredictions.html?id=9452210"
+                        title="NOAA Buoy Data"></iframe>
+                </div>
+                <p><small>NOAA Buoy 46060 - West Kodiak</small></p>
+            </div>
+        </div>
+
+        <!-- Quick Access Links -->
+        <section>
+            <h2 class="section-header">Quick Access Resources</h2>
+            <div class="quick-links">
+                <a href="https://forecast.weather.gov/MapClick.php?lat=58.3010372&lon=-134.4246377" target="_blank"
+                    class="quick-link">
+                    <h4>NOAA Weather Service</h4>
+                    <p>Official weather forecasts and warnings for Juneau, Alaska</p>
+                </a>
+
+                <a href="https://tidesandcurrents.noaa.gov/" target="_blank" class="quick-link">
+                    <h4>NOAA Tides & Currents</h4>
+                    <p>Real-time and predicted tide data for all Alaska locations</p>
+                </a>
+
+                <a href="https://www.weather.gov/afc/marine" target="_blank" class="quick-link">
+                    <h4>Alaska Marine Weather</h4>
+                    <p>Specialized marine forecasts for Alaska waters</p>
+                </a>
+
+                <a href="https://www.ndbc.noaa.gov/" target="_blank" class="quick-link">
+                    <h4>NOAA Buoy Network</h4>
+                    <p>Real-time wave, wind, and weather data from ocean buoys</p>
+                </a>
+
+                <a href="https://www.weather.gov/safety/marine" target="_blank" class="quick-link">
+                    <h4>Marine Safety</h4>
+                    <p>Essential safety information for mariners</p>
+                </a>
+
+                <a href="https://www.aviationweather.gov/" target="_blank" class="quick-link">
+                    <h4>Aviation Weather</h4>
+                    <p>Weather information useful for marine and aviation operations</p>
+                </a>
+
+                <a href="https://ocean.weather.gov/" target="_blank" class="quick-link">
+                    <h4>Ocean Prediction Center</h4>
+                    <p>Marine weather and wave forecasts for open ocean areas</p>
+                </a>
+
+                <a href="https://www.weather.gov/ajk/" target="_blank" class="quick-link">
+                    <h4>NWS Juneau</h4>
+                    <p>Southeast Alaska weather service office</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section>
+            <h2 class="section-header">Specialized Marine Resources</h2>
+            <div class="conditions-grid">
+                <div class="condition-card">
+                    <h3>🚢 Vessel Traffic</h3>
+                    <p>Track vessel movements in Alaska waters:</p>
+                    <ul>
+                        <li><a href="https://www.marinetraffic.com/" target="_blank">Marine Traffic</a></li>
+                        <li><a href="https://www.vesselfinder.com/" target="_blank">Vessel Finder</a></li>
+                    </ul>
+                </div>
+
+                <div class="condition-card">
+                    <h3>🧭 Navigation</h3>
+                    <p>Charts and navigation resources:</p>
+                    <ul>
+                        <li><a href="https://nauticalcharts.noaa.gov/" target="_blank">NOAA Nautical Charts</a></li>
+                        <li><a href="https://www.navcen.uscg.gov/" target="_blank">US Coast Guard Navigation
+                                Center</a></li>
+                    </ul>
+                </div>
+
+                <div class="condition-card">
+                    <h3>🔬 Research Data</h3>
+                    <p>Oceanographic and ecological data:</p>
+                    <ul>
+                        <li><a href="https://www.aoos.org/" target="_blank">Alaska Ocean Observing System</a></li>
+                        <li><a href="https://portal.aoos.org/" target="_blank">AOOS Data Portal</a></li>
+                    </ul>
+                </div>
+
+                <div class="condition-card">
+                    <h3>🐋 Wildlife Observations</h3>
+                    <p>Report and view marine wildlife sightings:</p>
+                    <ul>
+                        <li><a href="https://www.whalemuseum.org/orca-network" target="_blank">Orca Network</a></li>
+                        <li><a href="https://www.happywhale.com/" target="_blank">Happywhale</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Information -->
+        <section>
+            <h2 class="section-header">Emergency Information</h2>
+            <div class="alert-banner" style="background: #fee2e2; border-color: #dc2626;">
+                <h4 style="color: #dc2626;">🚨 Emergency Contacts</h4>
+                <ul style="margin: 0.5rem 0; color: #374151;">
+                    <li><strong>US Coast Guard Emergency:</strong> Channel 16 VHF or 911</li>
+                    <li><strong>Coast Guard Rescue Coordination Center:</strong> (907) 463-2000</li>
+                    <li><strong>Marine Weather Emergency:</strong> (907) 271-5136</li>
+                    <li><strong>Alaska State Troopers:</strong> (907) 451-5100</li>
+                </ul>
+            </div>
+        </section>
+        </div>
+    </main>
+
+    <script>
+        function updateLocation() {
+            const select = document.getElementById('location-select');
+            const location = select.value;
+
+            // This function can be expanded to update embedded content based on location
+            // For now, it's a placeholder for future functionality
+            console.log('Selected location:', location);
+
+            // Future enhancement: Update iframe sources based on selected location
+            // Example locations and their coordinates:
+            // Prince William Sound: 60.5384, -146.3183
+            // Cook Inlet: 60.7211, -151.2566
+            // Kenai Peninsula: 60.1166, -149.4389
+            // Kodiak: 57.7900, -152.4072
+            // Southeast Alaska: 58.3019, -134.4197
+        }
+
+        // Auto-refresh embedded content every 15 minutes
+        setInterval(function () {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                const src = iframe.src;
+                iframe.src = '';
+                iframe.src = src;
+            });
+        }, 900000); // 15 minutes
+    </script>
+</body>
+
+</html>
