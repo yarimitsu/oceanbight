@@ -7,6 +7,22 @@
     <title>Marine Conditions - Ocean Bight, LLC</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Privacy-focused Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0ZWN51NYL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-B0ZWN51NYL', {
+        anonymize_ip: true,
+        cookie_flags: 'secure;samesite=strict',
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+    </script>
+    
     <style>
         .conditions-grid {
             display: grid;
@@ -494,6 +510,14 @@
             });
         }, 900000); // 15 minutes
     </script>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Ocean Bight, LLC. Website developed with AI assistance. 
+            <a href="LICENSE" target="_blank">Code: MIT</a> | 
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Content: CC BY 4.0</a></p>
+        </div>
+    </footer>
 </body>
 
 </html>

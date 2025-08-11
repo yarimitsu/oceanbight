@@ -23,4 +23,13 @@ Then visit `http://localhost:8000`
 
 ## License
 
-© 2025 Ocean Bight. All rights reserved.
+This project uses a dual licensing approach:
+
+- **Code** (HTML, CSS, JavaScript): Licensed under the [MIT License](LICENSE)
+- **Content** (text, images, publications): Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)
+
+See the [LICENSE](LICENSE) file for full details.
+
+## AI Assistance Acknowledgment
+
+This website was developed with programming assistance from Claude AI (Anthropic, 2025). AI was used for code structure, styling, and technical implementation. All scientific content, research, and professional information remains the original work of Dr. Mayumi Arimitsu and Ocean Bight, LLC.

@@ -7,6 +7,22 @@
     <title>Ocean Bight - Marine Ecological Consulting</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Privacy-focused Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0ZWN51NYL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-B0ZWN51NYL', {
+        anonymize_ip: true,
+        cookie_flags: 'secure;samesite=strict',
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+    </script>
+    
     <style>
         .project-card {
             background: #181f2a;
@@ -86,7 +102,7 @@
             <a href="#hero">Home</a>
             <a href="about.html">CV</a>
             <!-- <a href="marine-conditions.html">Marine Conditions</a> -->
-            <a href="#projects">Chomp Watch</a>
+            <a href="#projects">Side Projects</a>
             <a href="#contact">Contact</a>
         </nav>
     </aside>
@@ -116,9 +132,19 @@
                 <p>With the help of AI tools for programming, I'm working on side projects to help document science and
                     engage the public in research and marine conservation. One of these side projects is this website,
                     which is under active development, so check back for updates!</p>
+                
+                <div class="project-card fade-in" id="climate-stories">
+                    <h3>Climate Data Stories</h3>
+                    <p><strong>Climate Data Stories</strong> transform publicly available climate datasets into visual narratives that connect the science to our everyday lives. By framing global trends through a compelling personal lens, these stories aim to make the impacts of climate change tangible and relatable for a broader audience.</p>
+                    <p class="project-subheading"><strong>A Record of Warming Seas Across Generations</strong></p>
+                    <p> For more than a century, global sea surface temperatures have shifted from cooler-than-average conditions (blue) to record warmth (red), with each successive generation experiencing less of the cool past and more warming in a rapidly changing climate. Data: <a href="https://journals.ametsoc.org/view/journals/clim/30/20/jcli-d-16-0836.1.xml" target="_blank">ERSST v5 (Huang et al. 2017)</a>.</p>
+                    <img src="images/generations_ERSST_custom.png" alt="generations climate graph" class="project-example">
+                    <p class="figure-caption"> The figure above shows the changes in sea surface temperatures experienced by four generations in my family, with each vertical bar representing one year and colors showing change from a mid-20th-century baseline (blue = cooler, red = warmer). From my grandmother's cool childhood seas to my nephew's record-warm oceans, the climate we experience during our lifetime shapes how we understand the world. This data graphic was inspired by one shared by Vasco Mantas  <a href="https://www.linkedin.com/in/vascomantas/recent-activity/all/" target="_blank">here</a>.</p>
+                </div>
+                
                 <div class="project-card fade-in" id="chomp-watch">
                     <h3>Chomp Watch</h3>
-                    <p><strong>Chomp Watch</strong> is a citizen science initiative that engages fishermen and
+                    <p><strong>Chomp Watch</strong> is a citizen science initiative that engages fishers and
                         researchers in collaborative data collection to understand salmon feeding ecology and marine
                         ecosystem health. Below is an example of how image data can quantify changes in prey composition
                         over time.</p>
@@ -127,7 +153,7 @@
                         (x-axis). Sample size (n), and number of empty stomachs per year are noted. Error bars are
                         standard errors (SE). Empty stomachs are not included in the average fish counts.</p>
                     <img src="images/IMG_7831.jpg" alt="Example king salmon stomach photo" class="project-example">
-                    <p>Example Chinook salmon stomach photo for Chomp Watch. Thanks to image data contributors including recreational fishers John Moran, Lara Dzinich, Chris Lunsford, Dave Berger, Pat Malecha, Shawn Carey, Marina Lindsey, and others</p>
+                    <p>Example Chinook salmon stomach photo for Chomp Watch. Thanks to image data contributors including recreational fishers John Moran, Lara Dzinich, Chris Lunsford, Dave Berger, Pat Malecha, Shawn Carey, Marina Lindsey, Andrew Dimond, and others</p>
                     <div class="coming-soon">Chomp Watch image web contribution page coming soon.</div>
                 </div>
             </section>
@@ -183,6 +209,13 @@
                     <button type="submit">Send Message</button>
                 </form>
             </section>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Ocean Bight, LLC. Website developed with AI programming assistance. 
+                <a href="LICENSE" target="_blank">Code: MIT</a> | 
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Content: CC BY 4.0</a></p>
+            </div>
+        </footer>
     </main>
 
     <script src="script.js" defer></script>

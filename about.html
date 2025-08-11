@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Ocean Bight, LLC</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Privacy-focused Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B0ZWN51NYL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-B0ZWN51NYL', {
+        anonymize_ip: true,
+        cookie_flags: 'secure;samesite=strict',
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+    </script>
 </head>
 
 <body>
@@ -18,8 +33,7 @@
         <nav class="sidebar-nav">
             <a href="index.html#hero">Home</a> <!-- Points to top of index.html -->
             <a href="about.html">CV</a> <!-- Current page -->
-            <a href="index.html#research">Research</a>
-            <a href="index.html#publications">Publications</a>
+            <a href="index.html#projects">Projects</a>
             <a href="index.html#contact">Contact</a>
         </nav>
     </aside>
@@ -48,7 +62,7 @@
                     <h3>Summary of Qualifications</h3>
                     <ul>
                         <li>Quantitative ecology and statistical modeling</li>
-                        <li>Seabird and forage fish survey methods</li>
+                        <li>Marine predator and forage fish survey methods</li>
                         <li>Marine heatwave impacts on ecosystems</li>
                         <li>Glacier fjord ecosystems</li>
                         <li>Wildlife monitoring and conservation</li>
@@ -62,10 +76,11 @@
                         <h5>U.S. Geological Survey, Alaska Science Center</h5>
                         <p class="experience-dates"><em>2010 – 2025</em></p>
                         <ul>
-                            <li>Developed and implemented seabird and forage fish monitoring surveys </li>
+                            <li>Developed and implemented marine predator and forage fish monitoring surveys </li>
                             <li>Led a team conducting research on pelagic and benthic marine ecosystems</li>
                             <li>Managed field research projects on land and at sea</li>
                             <li>Coordinated interdisciplinary research and led vessel-based marine surveys</li>
+                            <li><a href="https://gulfwatchalaska.org/" target="_blank">Gulf Watch Alaska</a> Pelagic Component Lead (2017-2025), coordinating long-term monitoring and integrated research programs for killer whales, humpback whales, marine birds, and forage fish in the northern Gulf of Alaska</li>
                         </ul>
                     </div>
                     <div class="experience-item">
@@ -73,7 +88,7 @@
                         <h5>U.S. Geological Survey, Alaska Science Center</h5>
                         <p class="experience-dates"><em>2002 – 2010</em></p>
                         <ul>
-                            <li>Gained skills leading seabird and forage fish field research</li>
+                            <li>Gained skills leading field research</li>
                             <li>Practical and formal training in fish taxonomy</li>
                             <li>Specialized in fisheries acoustics and midwater trawl sampling</li>
                         </ul>
@@ -83,7 +98,7 @@
                         <h5>U.S. Geological Survey, Alaska Science Center</h5>
                         <p class="experience-dates"><em>1998 – 2001</em></p>
                         <ul>
-                            <li>Assisted with seabird, forage fish, and oceanographic surveys</li>
+                            <li>Assisted with seabird, marine mammal, forage fish, and oceanographic surveys</li>
                         </ul>
                     </div>
 
@@ -685,6 +700,14 @@
                 </div>
             </div>
         </section>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Ocean Bight, LLC. Website developed with AI assistance. 
+                <a href="LICENSE" target="_blank">Code: MIT</a> | 
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Content: CC BY 4.0</a></p>
+            </div>
+        </footer>
     </main>
 
     <script src="script.js" defer></script>
