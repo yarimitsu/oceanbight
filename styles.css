@@ -217,10 +217,12 @@ a:hover {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     background-color: #202830;
+    pointer-events: none;
 }
 
 .carousel-item.active {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .carousel-item img {
