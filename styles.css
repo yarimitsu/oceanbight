@@ -259,14 +259,6 @@ a:hover {
     color: var(--button-text-dark);
 }
 
-.carousel-prev {
-    /* No longer need left property */
-}
-
-.carousel-next {
-    /* No longer need right property */
-}
-
 /* Section headers */
 .section-header {
     color: var(--primary-color);
@@ -625,6 +617,11 @@ footer {
         position: static !important;
         /* Disable sticky positioning on mobile */
     }
+
+    .footer-content {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
 }
 
 /* Section headers */
@@ -821,11 +818,4 @@ section h2,
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        font-size: 0.75rem;
-        line-height: 1.4;
-    }
 }
