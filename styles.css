@@ -892,8 +892,8 @@ section h2,
     color: #f3f6fa;
     border-radius: var(--border-radius-md);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    padding: var(--space-lg) var(--space-xl) calc(var(--space-xl) + var(--space-sm)) var(--space-xl);
-    margin-bottom: calc(var(--space-xl) + var(--space-sm));
+    padding: calc(var(--space-xl) + var(--space-sm)) var(--space-xl) calc(var(--space-xl) + var(--space-sm)) var(--space-xl);
+    margin-bottom: calc(var(--space-2xl) + var(--space-lg));
     text-align: center;
     width: 100%;
     max-width: 1800px;
@@ -961,7 +961,7 @@ section h2,
 
 /* Project subheading styling */
 .project-subheading {
-    font-size: calc(var(--font-size-3xl) + 0.25rem);
+    font-size: var(--font-size-3xl);
     font-weight: 700;
     color: var(--primary-color);
     margin: var(--space-lg) 0 var(--space-md) 0;
@@ -996,7 +996,7 @@ section h2,
     }
 
     .project-subheading {
-        font-size: calc(var(--font-size-4xl) + 0.25rem);
+        font-size: var(--font-size-4xl);
     }
 
     .figure-caption {
