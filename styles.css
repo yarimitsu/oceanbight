@@ -15,8 +15,10 @@
     --accent-color: #e8f4ff;
     --glacier-blue: #183852;
     --deep-ice: #0d2c40;
-    --ice-glow: rgba(165, 216, 255, 0.3);  /* Reduced from 0.5 for subtlety */
-    --ice-glow-strong: rgba(165, 216, 255, 0.5);  /* For stronger effects when needed */
+    --ice-glow: rgba(165, 216, 255, 0.3);
+    /* Reduced from 0.5 for subtlety */
+    --ice-glow-strong: rgba(165, 216, 255, 0.5);
+    /* For stronger effects when needed */
     --text-primary: #f0f8ff;
     --text-secondary: #c0d6e8;
     --glass-bg: rgba(26, 63, 92, 0.65);
@@ -584,8 +586,13 @@ nav {
 }
 
 @keyframes spin {
-    0% { transform: translateY(-50%) rotate(0deg); }
-    100% { transform: translateY(-50%) rotate(360deg); }
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+    }
 }
 
 /* Footer */
@@ -900,6 +907,8 @@ section h2,
     font-family: 'Syne', sans-serif;
     line-height: var(--line-height-tight);
     font-size: var(--font-size-4xl);
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .project-card p {
@@ -910,17 +919,33 @@ section h2,
     margin-right: auto;
 }
 
+.project-link {
+    margin: var(--space-sm) auto var(--space-md) auto;
+    max-width: 1300px;
+}
+
+.project-link a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.project-link a:hover,
+.project-link a:focus {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
 .project-card img.project-main {
-    width: 100%;
-    max-width: 1600px;
+    width: min(100%, 900px);
     height: auto;
     display: block;
     margin: 0 auto var(--space-lg) auto;
 }
 
 .project-card img.project-example {
-    width: 100%;
-    max-width: 1600px;
+    width: min(100%, 900px);
     height: auto;
     display: block;
     margin: var(--space-lg) auto 0 auto;
@@ -936,13 +961,14 @@ section h2,
 
 /* Project subheading styling */
 .project-subheading {
-    font-size: var(--font-size-3xl);
-    font-weight: 600;
+    font-size: calc(var(--font-size-3xl) + 0.25rem);
+    font-weight: 700;
     color: var(--primary-color);
     margin: var(--space-lg) 0 var(--space-md) 0;
     max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
+    letter-spacing: 0.01em;
 }
 
 /* Figure caption styling */
@@ -970,7 +996,7 @@ section h2,
     }
 
     .project-subheading {
-        font-size: var(--font-size-4xl);
+        font-size: calc(var(--font-size-4xl) + 0.25rem);
     }
 
     .figure-caption {
