@@ -61,12 +61,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Form submission
+    // Form submission with loading state
     const form = document.getElementById('contact-form');
     if (form) {
         form.addEventListener('submit', (e) => {
-            // Let the form submit naturally to Formspree
-            // The form will redirect to the thank you page after successful submission
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+
+            // Add loading state
+            submitButton.classList.add('loading');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            // Reset on error (form will redirect to thank you page on success)
+            setTimeout(() => {
+                if (!window.location.href.includes('thanks.html')) {
+                    submitButton.classList.remove('loading');
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                }
+            }, 10000); // Reset after 10 seconds if still on page
         });
     }
 

@@ -1,5 +1,9 @@
 # Development tools and helpers
 claude_helper.py
+content-manager.html
+content-manager.js
+content-manager-fixed.html
+content_manager.py
 
 # Environment variables
 .env
