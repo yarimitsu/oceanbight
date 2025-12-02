@@ -961,7 +961,7 @@ section h2,
 
 /* Project subheading styling */
 .project-subheading {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
     font-weight: 700;
     color: var(--primary-color);
     margin: var(--space-lg) 0 var(--space-md) 0;
@@ -971,11 +971,17 @@ section h2,
     letter-spacing: 0.01em;
 }
 
+/* Add extra spacing for subsequent subheadings in climate stories */
+.project-subheading + p + img + .figure-caption + .project-subheading,
+.project-subheading:not(:first-of-type) {
+    margin-top: calc(var(--space-2xl) + var(--space-lg));
+}
+
 /* Figure caption styling */
 .figure-caption {
     font-style: italic;
-    font-size: var(--font-size-lg);
-    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    color: #9bb3c8;
     line-height: var(--line-height-relaxed);
     margin-top: var(--space-sm);
     max-width: 1300px;
@@ -996,11 +1002,11 @@ section h2,
     }
 
     .project-subheading {
-        font-size: var(--font-size-4xl);
+        font-size: var(--font-size-5xl);
     }
 
     .figure-caption {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-base);
     }
 
     /* Match bio-text styling to project cards */
