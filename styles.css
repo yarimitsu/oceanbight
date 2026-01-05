@@ -817,6 +817,15 @@ img {
     margin-bottom: var(--space-sm);
 }
 
+.bio-text h5 {
+    color: var(--primary-color);
+    font-family: 'Syne', sans-serif;
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-tight);
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+}
+
 .bio-text p,
 .bio-text ul {
     color: var(--text-secondary);
@@ -1023,6 +1032,10 @@ section h2,
         font-size: var(--font-size-3xl);
     }
 
+    .bio-text h5 {
+        font-size: var(--font-size-2xl);
+    }
+
     /* Larger carousel for wide screens */
     .carousel-inner {
         height: 700px;
@@ -1072,6 +1085,10 @@ section h2,
     .bio-text h4 {
         font-size: var(--font-size-lg);
     }
+
+    .bio-text h5 {
+        font-size: var(--font-size-base);
+    }
 }
 
 @media (max-width: 600px) {
@@ -1103,5 +1120,9 @@ section h2,
 
     .bio-text h4 {
         font-size: var(--font-size-base);
+    }
+
+    .bio-text h5 {
+        font-size: var(--font-size-sm);
     }
 }
