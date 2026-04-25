@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GOA Seabird SST Summaries</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <style>
+    :root {
+      --bg: #eef4f7;
+      --panel: #ffffff;
+      --ink: #1f2a30;
+      --muted: #5d6b73;
+      --line: #d7dde1;
+      --accent: #0d6f8b;
+      --accent-dark: #084e61;
+      --accent-soft: rgba(13, 111, 139, 0.18);
+      --accent-line: rgba(13, 111, 139, 0.72);
+      --selected-fill: rgba(199, 92, 37, 0.24);
+      --selected-line: rgba(199, 92, 37, 0.95);
+      --sea: #d8ebf4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.92), rgba(255,255,255,0) 35%),
+        linear-gradient(180deg, #e8f1f5 0%, #f7f4ec 100%);
+    }
+    .shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+    }
+    .sidebar {
+      border-right: 1px solid var(--line);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      padding: 24px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .sidebar h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.08;
+      font-weight: 400;
+    }
+    .sidebar p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+    .sidebar-map-wrap {
+      background: rgba(255,255,255,0.95);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(19, 39, 46, 0.08);
+    }
+    .sidebar-map-header {
+      padding: 12px 14px 8px;
+      border-bottom: 1px solid rgba(215, 221, 225, 0.7);
+    }
+    .sidebar-map-header h2 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .sidebar-map-header p {
+      font-size: 12px;
+    }
+    #map {
+      height: 260px;
+      width: 100%;
+      background: var(--sea);
+    }
+    .source {
+      margin-top: auto;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .source a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+    .content {
+      padding: 18px;
+      min-width: 0;
+    }
+    .viewer-card {
+      height: calc(100vh - 36px);
+      min-height: 760px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 36px rgba(19, 39, 46, 0.08);
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    .viewer-header {
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid rgba(215, 221, 225, 0.75);
+      background: rgba(255,255,255,0.96);
+    }
+    .viewer-header h2 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 400;
+    }
+    .viewer-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .viewer-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+    .leaflet-control-attribution {
+      font-size: 10px;
+    }
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .content {
+        padding: 12px;
+      }
+      .viewer-card {
+        height: 76vh;
+        min-height: 640px;
+      }
+      #map {
+        height: 220px;
+      }
+    }
+    @media (max-width: 640px) {
+      .sidebar {
+        padding: 18px 14px 14px;
+      }
+      .content {
+        padding: 10px;
+      }
+      .viewer-card {
+        min-height: 560px;
+        height: 72vh;
+      }
+      .viewer-header {
+        padding: 14px 14px 10px;
+      }
+      .viewer-header h2 {
+        font-size: 18px;
+      }
+      #map {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <h1>Alaska Seabird Foraging Area SST Summaries</h1>
+      <p>Select a colony from the map to switch the summary page on the right.</p>
+      <p>Each circle shows the 100 km-radius foraging area used for the colony-specific SST, marine heatwave, and cold-spell summaries.</p>
+
+      <section class="sidebar-map-wrap" aria-label="Colony map navigation">
+        <div class="sidebar-map-header">
+          <h2>Colony Map</h2>
+          <p>One click changes the selected colony.</p>
+        </div>
+        <div id="map"></div>
+      </section>
+
+      <p class="source">Data source for all summaries:
+        <a href="https://www.ncei.noaa.gov/products/optimum-interpolation-sst" target="_blank" rel="noopener noreferrer">NOAA/NCEI OISST v2.1</a>
+      </p>
+    </aside>
+
+    <main class="content">
+      <section class="viewer-card">
+        <div class="viewer-header">
+          <h2 id="viewer-title">Middleton Island</h2>
+          <p id="viewer-subtitle">100 km foraging-area SST summary with monthly anomalies and daily marine heatwave/cold-spell events.</p>
+        </div>
+        <iframe
+          id="viewer-frame"
+          class="viewer-frame"
+          title="Selected colony sea surface temperature summary"
+          src="MDO_foraging_interactive_MHW.html"
+        ></iframe>
+      </section>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    const colonies = [
+      { code: "AIKT", name: "Aiktak", lat: 54.1886, lon: -164.84, file: "AIKT_foraging_interactive_MHW.html" },
+      { code: "BULD", name: "Buldir", lat: 52.3581, lon: -184.0753, file: "BULD_foraging_interactive_MHW.html" },
+      { code: "STGE", name: "St. George", lat: 56.57882, lon: -169.701, file: "STGE_foraging_interactive_MHW.html" },
+      { code: "CALI", name: "Cape Lisburne", lat: 68.88142, lon: -166.21030, file: "CALI_foraging_interactive_MHW.html" },
+      { code: "CHIS", name: "Chisik", lat: 60.13929, lon: -152.664, file: "CHIS_foraging_interactive_MHW.html" },
+      { code: "CHOW/SUKL", name: "Chowiet/Suklik", lat: 56.0509, lon: -156.6378, file: "SUKL_foraging_interactive_MHW.html" },
+      { code: "GULL", name: "Gull Island", lat: 59.58405, lon: -151.3285, file: "GULL_foraging_interactive_MHW.html" },
+      { code: "MDO", name: "Middleton Island", lat: 59.4349304, lon: -146.4045243, file: "MDO_foraging_interactive_MHW.html" },
+      { code: "STLA", name: "St. Lazaria", lat: 56.9872, lon: -135.7047, file: "STLA_foraging_interactive_MHW.html" }
+    ];
+
+    const defaultCode = "MDO";
+    const viewerTitle = document.getElementById("viewer-title");
+    const viewerSubtitle = document.getElementById("viewer-subtitle");
+    const viewerFrame = document.getElementById("viewer-frame");
+    const map = L.map("map", {
+      worldCopyJump: false,
+      zoomControl: false,
+      zoomSnap: 0.1,
+      zoomDelta: 0.5,
+      scrollWheelZoom: false,
+      dragging: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      touchZoom: false
+    }).setView([57.8, -170.0], 2.4);
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+      maxZoom: 9,
+      subdomains: "abcd",
+      attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
+    }).addTo(map);
+
+    const mapItems = {};
+    function setSelectedStyles(code) {
+      colonies.forEach((colony) => {
+        const isSelected = colony.code === code;
+        const item = mapItems[colony.code];
+        if (item) {
+          item.circle.setStyle({
+            color: isSelected ? "rgba(199, 92, 37, 0.95)" : "rgba(13, 111, 139, 0.72)",
+            fillColor: isSelected ? "rgba(199, 92, 37, 0.24)" : "rgba(13, 111, 139, 0.18)",
+            fillOpacity: isSelected ? 0.42 : 0.35,
+            weight: isSelected ? 3 : 2
+          });
+          item.marker.setStyle({
+            color: isSelected ? "#8f3d17" : "#083d4b",
+            fillColor: isSelected ? "#c75c25" : "#0d6f8b",
+            radius: isSelected ? 7 : 6,
+            weight: isSelected ? 3 : 2
+          });
+        }
+      });
+    }
+
+    function selectColony(code, panToColony) {
+      const colony = colonies.find((entry) => entry.code === code);
+      if (!colony) {
+        return;
+      }
+      viewerTitle.textContent = colony.name;
+      viewerSubtitle.textContent = `${colony.code} colony: 100 km foraging-area SST summary with monthly anomalies and daily marine heatwave/cold-spell events.`;
+      if (!viewerFrame.src || !viewerFrame.src.endsWith(colony.file)) {
+        viewerFrame.src = colony.file;
+      }
+      setSelectedStyles(code);
+      if (panToColony && mapItems[colony.code]) {
+        map.panTo([colony.lat, colony.lon], { animate: true, duration: 0.6 });
+      }
+    }
+
+    colonies.forEach((colony) => {
+      const circle = L.circle([colony.lat, colony.lon], {
+        radius: 100000,
+        color: "rgba(13, 111, 139, 0.72)",
+        weight: 2,
+        fillColor: "rgba(13, 111, 139, 0.18)",
+        fillOpacity: 0.35
+      }).addTo(map);
+
+      const marker = L.circleMarker([colony.lat, colony.lon], {
+        radius: 6,
+        color: "#083d4b",
+        weight: 2,
+        fillColor: "#0d6f8b",
+        fillOpacity: 1
+      }).addTo(map);
+
+      const select = () => selectColony(colony.code, false);
+      circle.on("click", select);
+      marker.on("click", select);
+      marker.bindTooltip(`${colony.name} (${colony.code})`, {
+        permanent: false,
+        sticky: true,
+        direction: "top",
+        offset: [0, -8],
+        className: "colony-label"
+      });
+
+      mapItems[colony.code] = { circle, marker };
+    });
+
+    selectColony(defaultCode, false);
+  </script>
+</body>
+</html>
+
