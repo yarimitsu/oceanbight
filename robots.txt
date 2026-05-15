@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oceanbight.com/sitemap.xml
