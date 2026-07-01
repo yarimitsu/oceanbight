@@ -9,16 +9,6 @@ Built with:
 - CSS3
 - JavaScript
 
-## Development
-
-To run locally:
-
-```bash
-python -m http.server 8000
-```
-
-Then visit `http://localhost:8000`
-
 ## License
 
 This project uses a dual licensing approach:
